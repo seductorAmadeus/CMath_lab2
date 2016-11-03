@@ -6,25 +6,19 @@ public class Main {
 
     public static void main(String[] args) {
         InputData inputData = null;
-        while (true) {
+        do {
             ResultsPrinter.printMainMenu();
-            switch (input.getMenuItem()) {
+            switch (input.getMenuItem(1, 3)) {
                 case 1:
                     inputData = enterNewData();
                     break;
                 case 2:
                     runTrapezoidalMethod(inputData);
-                    if (calculationWasSuccessfully) {
-                        return;
-                    }
                     break;
                 case 3:
-                    Runtime.getRuntime().exit(0);
-                    break;
-                default:
-                    System.out.println("Re-enter menu item ('1', '2' or '3'): \n");
+                    return;
             }
-        }
+        } while (!calculationWasSuccessfully);
     }
 
     private static void runTrapezoidalMethod(InputData inputData) {
