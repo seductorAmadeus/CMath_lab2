@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Input {
 
     public int getMenuItem(int firstNumberOfMenuItem, int lastNumberOfMenuItem) {
-        Boolean actionWasSuccessfully = false;
+        boolean actionWasSuccessfully = false;
         int menuItem = 0;
         do {
             try {
@@ -21,7 +21,53 @@ public class Input {
     }
 
     public InputData getInputData() {
-        return new InputData(0, 2); // some test values
-    }
+        Scanner in = new Scanner(System.in);
+        int a, b, precision;
+        Functions function = null;
+        ResultsPrinter.printSideMenu();
 
+        switch (getMenuItem(1, 3)) {
+            case 1:
+                function = Functions.function1;
+                break;
+            case 2:
+                function = Functions.function2;
+                break;
+            case 3:
+                function = Functions.function3;
+                break;
+        }
+
+        do {
+            System.out.print("Enter a lower limit of integration:\n> ");
+            try {
+                a = Integer.valueOf(in.nextLine());
+                break;
+            } catch (NumberFormatException exp) {
+                System.out.println("Format error;");
+            }
+        } while (true);
+
+        do {
+            System.out.print("Enter a upper limit of integration:\n> ");
+            try {
+                b = Integer.valueOf(in.nextLine());
+                break;
+            } catch (NumberFormatException exp) {
+                System.out.println("Format error;");
+            }
+        } while (true);
+
+        do {
+            System.out.print("Enter a precision\n> ");
+            try {
+                precision = Integer.valueOf(in.nextLine());
+                break;
+            } catch (NumberFormatException exp) {
+                System.out.println("Format error;");
+            }
+        } while (true);
+
+        return new InputData(function, a, b, precision);
+    }
 }
