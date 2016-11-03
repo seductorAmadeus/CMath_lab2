@@ -26,7 +26,7 @@ public class Main {
             System.out.println("The input data is not found; enter new data \n");
         } else {
             OutputData outputData;
-            outputData = IntegralsSolver.solve(inputData);
+            outputData = IntegralsSolver.integrate(inputData);
             ResultsPrinter.printOutputData(outputData);
             calculationWasSuccessfully = true;
             dataEntered = true;

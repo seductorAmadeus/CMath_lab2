@@ -11,6 +11,10 @@ public class InputData {
         this.function = function;
     }
 
+    public Functions getFunction() {
+        return function;
+    }
+    
     public int getUpperLimit() {
         return b;
     }
