@@ -22,7 +22,8 @@ public class Input {
 
     public InputData getInputData() {
         Scanner in = new Scanner(System.in);
-        int a, b, precision;
+        int a, b;
+        double precision;
         Functions function = null;
         ResultsPrinter.printSideMenu();
 
@@ -61,7 +62,7 @@ public class Input {
         do {
             System.out.print("Enter a precision\n> ");
             try {
-                precision = Integer.valueOf(in.nextLine());
+                precision = Double.valueOf(in.nextLine().replace(",", "."));
                 break;
             } catch (NumberFormatException exp) {
                 System.out.println("Format error;");

@@ -17,4 +17,8 @@ public class OutputData {
         return numberOfPartitions;
     }
 
+    public double getErrorValue() {
+        return errorValue;
+    }
+
 }

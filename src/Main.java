@@ -36,7 +36,7 @@ public class Main {
     private static InputData enterNewData() {
         input = new Input();
         InputData inputData = input.getInputData();
-        ResultsPrinter.printInputData(inputData);
+        dataEntered = true;
         return inputData;
     }
 }

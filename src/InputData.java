@@ -1,10 +1,10 @@
 public class InputData {
     private int a; // lower limit
     private int b; // upper limit
-    private int precision; // int or double?
+    private double precision;
     private Functions function;
 
-    InputData(Functions function, int a, int b, int precision) {
+    InputData(Functions function, int a, int b, double precision) {
         this.a = a;
         this.b = b;
         this.precision = precision;
@@ -23,7 +23,7 @@ public class InputData {
         return a;
     }
 
-    public int getPrecision() {
+    public double getPrecision() {
         return precision;
     }
 }

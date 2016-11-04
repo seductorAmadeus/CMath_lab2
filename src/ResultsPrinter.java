@@ -1,11 +1,10 @@
 public class ResultsPrinter {
 
     public static void printOutputData(OutputData outputData) {
-
-    }
-
-    public static void printInputData(InputData inputData) {
-
+        System.out.println("Result: " + outputData.getSummary());
+        System.out.println("Number of partitions: " + outputData.getNumberOfPartitions());
+        System.out.println("Precision: " + outputData.getErrorValue());
+        System.out.println("____________________________"); // test only
     }
 
     public static void printMainMenu() {
