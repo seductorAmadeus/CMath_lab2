@@ -3,20 +3,60 @@ public class IntegralsSolver {
     public static OutputData integrate(InputData inputData) {
         int a = inputData.getLowerLimit();
         int b = inputData.getUpperLimit();
-        int precision = inputData.getPrecision();
-        double temp = getResultOfFunction(inputData.getFunction(), 2); // test only
+        double precision = inputData.getPrecision();
+        Functions function = inputData.getFunction();
+        double h, iterationResult = 0, sum, previousIterationResult, newPrecision;
+        int iterationsCounter = 1;
 
-        return new OutputData(2.2, 12, 0.3); // test only
+        h = Math.abs(b - a);
+        long start = System.nanoTime(); // save time
+        do {
+            previousIterationResult = iterationResult;
+            sum = 0;
+            for (int i = 1; i < iterationsCounter + 1; i++) {
+                sum += getResultOfFunction(function, a + i * h);
+            }
+            iterationResult = h * ((getResultOfFunction(inputData.getFunction(), a) + getResultOfFunction(inputData.getFunction(), b)) * 0.5 + sum);
+            newPrecision = Math.abs(iterationResult - previousIterationResult) / 3;
+            if (newPrecision > precision) {
+                h *= 0.5;
+                iterationsCounter *= 2;
+                System.out.println(iterationsCounter);
+            }
+        }
+        while (newPrecision > precision && iterationsCounter < Math.pow(2, 26)); // 2^26 - maximum number of iterations
+        /**
+         * measure time of algorithm
+         */
+        long end = System.nanoTime();
+        long traceTime = end - start;
+        System.out.print("TIME: " + traceTime + "\n");
+        /**
+         * end of measure time of algorithm
+         */
+        return new OutputData(iterationResult, iterationsCounter, newPrecision);
     }
 
+    /**
+     * test method only
+     */
+    public static void main(String[] args) {
+        ResultsPrinter.printOutputData(IntegralsSolver.integrate(new InputData(Functions.function1, 0, 15, 1)));
+        ResultsPrinter.printOutputData(IntegralsSolver.integrate(new InputData(Functions.function2, 0, 3, 1)));
+        ResultsPrinter.printOutputData(IntegralsSolver.integrate(new InputData(Functions.function3, 1, 16, 0.12)));
+    }
+
+    /**
+     * end of test method
+     */
     private static double getResultOfFunction(Functions function, double x) {
         double result = 0;
         switch (function) {
             case function1:
-                result = Math.pow(Math.pow(Math.E, x), 2);
+                result = Math.pow(Math.E, Math.pow(-x, 2)) - Math.cos(7 * x + Math.PI / 2);
                 break;
             case function2:
-                result = (1 / 2 * Math.sin(x) * Math.E) / (10 * x);
+                result = Math.pow(Math.pow(Math.E, x), 2);
                 break;
             case function3:
                 result = 8 + 2 * x - x * x;
