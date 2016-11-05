@@ -1,12 +1,12 @@
 public class OutputData {
     private double summary;
     private int numberOfPartitions;
-    private double errorValue;
+    private double observationalError;
 
-    OutputData(double summary, int numberOfPartitions, double errorValue) {
+    OutputData(double summary, int numberOfPartitions, double observationalError) {
         this.summary = summary;
         this.numberOfPartitions = numberOfPartitions;
-        this.errorValue = errorValue;
+        this.observationalError = observationalError;
     }
 
     public double getSummary() {
@@ -17,8 +17,8 @@ public class OutputData {
         return numberOfPartitions;
     }
 
-    public double getErrorValue() {
-        return errorValue;
+    public double getObservationalError() {
+        return observationalError;
     }
 
 }

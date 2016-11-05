@@ -31,23 +31,6 @@ public class IntegralsSolver {
         return new OutputData(iterationResult, iterationsCounter, observationalError);
     }
 
-    /**
-     * test method only
-     *
-    public static void main(String[] args) {
-     // test 1 == test1 * (-1) [OK]
-     ResultsPrinter.printOutputData(IntegralsSolver.integrate(new InputData(Functions.function1, 15, 0, 0.123)));
-     // test 2: 1.806314..., 0..15, 0.123, n = 166 [0K]
-     ResultsPrinter.printOutputData(IntegralsSolver.integrate(new InputData(Functions.function1, 0, 15, 0.123)));
-     // test 3: 4443416, 0..8, 0.1, n = 512 [0K]
-     ResultsPrinter.printOutputData(IntegralsSolver.integrate(new InputData(Functions.function2, 0, 8, 0.1)));
-     // test 4: -990, 1..16, 0.1, n = 512 [0K]
-     ResultsPrinter.printOutputData(IntegralsSolver.integrate(new InputData(Functions.function3, 1, 16, 0.1)));
-    }
-
-     *
-     * end of test method
-     */
     private static double getResultOfFunction(InputData inputData, double x) {
         double result = 0;
         switch (inputData.getFunction()) {

@@ -1,10 +1,9 @@
 public class ResultsPrinter {
 
     public static void printOutputData(OutputData outputData) {
+        System.out.println("\nNumber of partitions: " + outputData.getNumberOfPartitions());
         System.out.println("Result: " + outputData.getSummary());
-        System.out.println("Number of partitions: " + outputData.getNumberOfPartitions());
-        System.out.println("Precision: " + outputData.getErrorValue());
-        System.out.println("____________________________"); // test only
+        System.out.println("Observational error: " + outputData.getObservationalError());
     }
 
     public static void printMainMenu() {
