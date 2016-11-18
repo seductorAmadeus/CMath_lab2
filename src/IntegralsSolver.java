@@ -1,9 +1,10 @@
 public class IntegralsSolver {
 
     public static OutputData integrate(InputData inputData) {
-        int a = inputData.getLowerLimit(), b = inputData.getUpperLimit();
+        double a = inputData.getLowerLimit(), b = inputData.getUpperLimit();
         double precision = inputData.getPrecision();
-        int iterationsCounter = 1, temp;
+        int iterationsCounter = 1;
+        double temp;
         double h, iterationResult = 0, sum, previousIterationResult, observationalError;
         boolean limitsSwapped = false;
         if (a > b) {

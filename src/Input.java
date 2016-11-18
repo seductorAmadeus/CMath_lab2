@@ -22,7 +22,7 @@ public class Input {
 
     public InputData getInputData() {
         Scanner in = new Scanner(System.in);
-        int a, b;
+        double a, b;
         double precision;
         Functions function = null;
         ResultsPrinter.printSideMenu();
@@ -42,7 +42,7 @@ public class Input {
         do {
             System.out.print("Enter a lower limit of integration:\n> ");
             try {
-                a = Integer.valueOf(in.nextLine());
+                a = Double.valueOf(in.nextLine().replace(",", "."));
                 break;
             } catch (NumberFormatException exp) {
                 System.out.println("Format error;");
@@ -52,7 +52,7 @@ public class Input {
         do {
             System.out.print("Enter a upper limit of integration:\n> ");
             try {
-                b = Integer.valueOf(in.nextLine());
+                b = Double.valueOf(in.nextLine().replace(",", "."));
                 break;
             } catch (NumberFormatException exp) {
                 System.out.println("Format error;");
